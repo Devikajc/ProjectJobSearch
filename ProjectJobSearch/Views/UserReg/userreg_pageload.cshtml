@@ -1,0 +1,112 @@
+﻿@model ProjectJobSearch.Models.UserInsert
+@{
+    ViewBag.Title = "userreg_pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User Registration</h2>
+<div id="div1">
+    @using (Html.BeginForm("userreg_click", "UserReg", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+    {
+
+        <div><label>Name : </label></div>
+        <div>
+            @Html.TextBoxFor(m => m.user_name)
+            @Html.ValidationMessageFor(m => m.user_name)
+        </div>
+
+        <div><label>Age : </label></div>
+        <div>
+            @Html.TextBoxFor(m => m.user_age)
+            @Html.ValidationMessageFor(m => m.user_age)
+        </div>
+
+        <div><label>Address:</label></div>
+        <div>
+            @Html.TextAreaFor(m => m.user_address)
+            @Html.ValidationMessageFor(m => m.user_address)
+        </div>
+
+        <div><label>Phone:</label></div>
+        <div>
+            @Html.TextBoxFor(m => m.user_phone)
+
+            @Html.ValidationMessageFor(m => m.user_phone)
+        </div>
+
+        <div><label>Email:</label></div>
+        <div>
+            @Html.TextBoxFor(m => m.user_email)
+
+            @Html.ValidationMessageFor(m => m.user_email)
+        </div>
+
+        <div><label>Qualifications:</label></div>
+        <div>
+            @foreach (var item in Model.MyFavouriteQual)
+            {
+                <label>
+                    <input type="checkbox" value="@item.value" checked="@item.ischecked" name="selectedqual" id="@item.value" />
+                    @Html.Raw(item.text)
+                </label>
+            }
+        </div>
+        <div><label>Skills:</label></div>
+        <div>
+            @foreach (var item in Model.MySkills)
+            {
+                <label>
+                    <input type="checkbox" value="@item.svalue" checked="@item.sischecked" name="selectedskill" id="@item.svalue" />
+                    @Html.Raw(item.stext)
+                </label>
+            }
+        </div>
+
+        <div><label>Experience:</label></div>
+        <div>
+            @Html.TextBoxFor(m => m.user_experience)
+
+        </div>
+
+        <div><label>Resume:</label></div>
+        <div>
+            @Html.TextBox("file", "", new { Type = "file" })
+        </div>
+
+        <div><label>Username:</label></div>
+        <div>
+            @Html.TextBoxFor(m => m.username)
+
+        </div>
+
+
+        <div><label>Password:</label></div>
+        <div>
+            @Html.PasswordFor(m => m.password)
+
+
+        </div>
+        <div><label>Confirm Password:</label></div>
+        <div>
+            @Html.PasswordFor(m => m.cpassword)
+            @Html.ValidationMessageFor(m => m.cpassword)
+        </div>
+
+        <div>
+            <input type="submit" value="Register" />
+            @Html.DisplayFor(m => m.usermsg)
+        </div>
+    }
+
+</div>
+<style>
+
+    #div1 {
+        background-color: lightsteelblue;
+    }
+
+    h2 {
+        color: darkblue;
+    }
+</style>

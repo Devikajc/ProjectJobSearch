@@ -1,0 +1,64 @@
+﻿@model ProjectJobSearch.Models.jobinsert
+@{
+    ViewBag.Title = "jobinsert_pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Insert Job</h2>
+<div id="div1">
+    @using (Html.BeginForm("jobinsert_click", "JobInsert", FormMethod.Post))
+    {
+        <div><label>Job Title : </label></div>
+        <div>
+            @Html.TextBoxFor(m => m.job_title)
+
+        </div>
+        <div><label>Experience Required (in years): </label></div>
+        <div>
+            @Html.TextBoxFor(m => m.job_experience)
+
+        </div>
+        
+        
+        <div><label>Skills:</label></div>
+        <div>
+            @foreach (var item in Model.MyJSkills)
+            {
+                <label>
+                    <input type="checkbox" value="@item.jsvalue" checked="@item.jsischecked" name="selectedjskill" id="@item.jsvalue" />
+                    @Html.Raw(item.jstext)
+                </label>
+            }
+        </div>
+       
+
+
+        <div><label>No. of Vacancy: </label></div>
+        <div>
+            @Html.TextBoxFor(m => m.job_vacancy)
+
+        </div>
+        <div><label>Date: </label></div>
+        <div>
+            @Html.TextBoxFor(m => m.job_date, new { placeholder = "yyyy-mm-dd" })
+
+        </div>
+        <div>
+            <input type="submit" value="Insert" />
+            @Html.DisplayFor(m => m.jobmsg)
+        </div>
+
+    }
+</div>
+<style>
+
+    #div1 {
+        background-color: lightsteelblue;
+    }
+
+    h2 {
+        color: darkblue;
+    }
+</style>
+

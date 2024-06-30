@@ -1,0 +1,46 @@
+﻿@model ProjectJobSearch.Models.applycls
+
+@{
+    ViewBag.Title = "ApplyJob_pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Apply Job</h2>
+<div id="div1">
+    @using (Html.BeginForm("ApplyJob_click", "ApplyJob", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+    {
+    
+        <div><label>Resume:</label></div>
+        <div>
+            @Html.TextBox("file", "", new { Type = "file" })
+        </div>
+        <div></div>
+        <div>
+            <input type="submit" value="Upload" />
+            @Html.DisplayFor(m => m.applymsg)
+        </div>
+
+
+    }
+    <div>
+        @Html.ActionLink("Back to Home Page", "UserHome", "Login")
+
+    </div>
+
+</div>
+
+<style>
+
+    #div1 {
+        background-color:lightsteelblue;
+    }
+    h1 {
+        color: darkblue;
+    }
+
+    
+</style>
+
+
+

@@ -1,0 +1,47 @@
+﻿@model ProjectJobSearch.Models.logincls
+
+@{
+    ViewBag.Title = "login_pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="div2">
+    <h2>Login Page</h2>
+    <div id="div1">
+        @using (Html.BeginForm("login_click", "Login", FormMethod.Get))
+        {
+            <div><label>Username : </label></div>
+            <div>
+                @Html.TextBoxFor(m => m.username)
+                @Html.ValidationMessageFor(m => m.username)
+            </div>
+
+
+            <div><label>Password : </label></div>
+            <div>
+                @Html.TextBoxFor(m => m.password)
+                @Html.ValidationMessageFor(m => m.password)
+            </div>
+
+            <div>
+                <input type="submit" value="Login" />
+                @Html.DisplayFor(m => m.msg)
+            </div>
+        }
+
+
+    </div>
+    </div>
+    <style>
+        #div2 {
+            background-color: cadetblue;
+        }
+        #div1 {
+            background-color: lightsteelblue;
+        }
+
+        h2 {
+            color: darkblue;
+        }
+    </style>
+
+
